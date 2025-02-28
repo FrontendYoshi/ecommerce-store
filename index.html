@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online-Shop Warenkorb</title>
+    <!--CSS Dateien einbinden-->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h1>Mein Online Shop</h1>
+
+    <h2>Produkte</h2> 
+    <div class="product-list">
+        <div class="product">
+            <img src="assets/Erdmännchen.png" alt="Erdmännchen">
+            <h3>Hundespielzeug Erdmännchen</h3>
+            <p>7.99€</p>
+            <button id="add-meerkat">Zum Warenkorb hinzufügen</button>
+        </div>
+
+        <div class="product">
+            <img src="assets/Eule.png" alt="Eule">
+            <h3>Hundespielzeug Eule</h3>
+            <p>6.99€</p>
+            <button id="add-owl">Zum Warenkorb hinzufügen</button>
+        </div>
+
+        <div class="product">
+            <img src="assets/Geier.png" alt="Geier">
+            <h3>Hundespielzeug Geier</h3>
+            <p>6.37€</p>
+            <button id="add-bird">Zum Warenkorb hinzufügen</button>
+        </div>
+
+        <div class="product">
+            <img src="assets/Plüschblume.png" alt="Plüschblume">
+            <h3>Hundespielzeug Plüschblume</h3>
+            <p>4.99€</p>
+            <button id="add-flowers">Zum Warenkorb hinzufügen</button>
+        </div>
+    </div>
+
+    <h2>Mein Warenkorb</h2>
+    <div class="cart">
+        <div id="cart-items">
+            <!--Warenkorb-Elemente werden hier dynamisch hinzugefügt-->
+        </div>
+        <div id="cart-total" class="cart-total">
+            Gesamtsumme: 0.00€
+        </div>
+    </div>
+    <!--JavaScript-Dateien am Ende des Body-Elements einbinden-->
+    <script src="js/main.js"></script>
+</body>
+</html>
