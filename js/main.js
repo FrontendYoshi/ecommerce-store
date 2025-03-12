@@ -1,92 +1,28 @@
-// Erstellen eines leeren Warenkorbs als Array
 let cart = [];
 
-//Funktion zum Hinzufügen von Produkten zum Warenkorb
-function addToCart(productName, price) {
-    //Prüfen, ob das Produkt bereits im Warenkorb ist
-    let existingProductIndex = findProductIndex(productName);
-
-    if (existingProductIndex !== -1) {
-        //Wenn das Produkt im Warenkorb ist, erhöhe die Menge
-        cart[existingProductIndex].quantity += 1;
-    } else {
-        //Wenn nicht, füge ein neues Produkt mit Menge 1 hinzu
-        let product = {
-            name: productName,
-            price: price,
-            quantity: 1
-        };
-        cart.push(product);
-    }
-    //Warenkorb anzeigen aktualisieren
-    displayCart();
-
-    //Animation oder Feedback hinzufügen (optional)
-    showAddedFeedback(productName);
-}
-
-//Hilfsfunktion zum Finden eines Produkts im Warenkorb
-function findProductIndex(productName) {
-    for (let i = 0; i < cart.length; i++) {
-        if (cart[i].name === productName) {
-            return i;
-        }
-    }
-    return -1 // Produkt nicht gefunden}
-}
-
-//Funktion zum Entfernen von Produkten aus dem Warenkorb
-function removeFromCart(index) {
-    //Element an der angegebenen Position entfernen
-    cart.splice(index, 1)
-
-    //Warenkorb anzeigen aktualisieren
-    displayCart();
-}
-//Funktion zum Ändern der Produktmenge
-function changeQuantity(index, change) {
-    //neue Menge berechnen
-    let newQuantity = cart[index].quantity + change;
-    if (newQuantity <= 0) {
-        //Wenn die Menge 0 oder weniger wird, Produkt entfernen
-        removeFromCart(index);
-    }
-    else {
-        //sonst Menge aktualisieren
-        cart[index].quantity = newQuantity;
-        displayCart();
-    }
-}
-//Funktion zur Berechnung der Gesamtsumme
-function calculateTotal() {
-    let total = 0;
-
-    //Für jedes Produkt im Warenkorb
-    cart.forEach(function (product) {
-        //Preis x Menge zum Gesamtbetrag addieren
-        total = total + (product.price * product.quantity);
+// jmd klickt auf den button, es wird ein neues objekt erstellt und dem warenkorb hinzugefügt
+function addtoCart(name, price) {
+    cart.push({
+        name: name,
+        price: price,
     });
-    //Gesamtsumme auf zwei Dezimalstellen runden
-    return total.toFixed(2);
-}
-// Funktion zur Anzeige des Warenkorbs
-function displayCart() {
-    //HTML-Element für den Warenkorb abrufen
-    let cartElement = document.getElementById("cart-items");
-
-    //Warenkorb leeren
-    cartElement.innerHTML = "";
     
-    //Wenn der Warenkorb leer ist, entsprechende Meldung zeigen
-    if (cart.length === 0) {
-        cartElement.innerHTML = "<p>Dein Warenkorb ist leer.</p>"
-    }
-    else {
-        //Für jedes Produkt im Warenkorb
-        cart.forEach(function(product,index){
-            //Neues Div für das Warenkorb-Element erstellen
-            let item = document.createElement("div");
-            item.className = "cart-item";
-        })
-    }
-}
+    showCart(cart); // Warenkorb anzeigen
+};
+// Funktion um Warenkorb anzeigen zu können
+function showCart(cart) {
+    // ich finde meinen <div> hier Warenkorb, speicher mir es als Konstante
+    const cartItems = document.getElementById("cart-items")
+    //für jedes Objekt im Cart erzeugen wir HTML(Inhalt für den Warenkorb)
+    //forEach durchläuft jedes Element einzeln..wir sagen welche Funktion für
+    //jedes Element ausgeführt werden soll
+    cart.forEach(product => {
+        const div = document.createElement("div")// Element <div> erstellen und als Konstante speichern
+        div.innerText = product.name + " " + product.price + "€" // ins div schreibe ich Name und Preis vom Produkt
+        cartItems.appendChild(div)    
+       
+    });
+    
+};
+
+
