@@ -1,0 +1,25 @@
+/* Allgemeine Seiteinstellungen */
+body {
+    background-color: #f5d0d0; /* Pastellrosa Hintergrund */
+    color: #000000; /* Schwarze Schriftfarbe */
+    font-family: Arial, sans-serif; /* Schriftart */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  /* Bildgrößenanpassung */
+  img {
+    width: 150; /* Bilder passen sich der Containergröße an */
+    height: auto; /* Höhe wird proportional angepasst */
+  }
+  
+  /* Layout für den Shop */
+  .container {
+    display: flex;   
+    padding: 20px;
+  }
+  
+  
+   

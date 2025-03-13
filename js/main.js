@@ -13,8 +13,24 @@ function addtoCart(name, price) {
         price: price,
     });
 
+
     showCart(cart); // Warenkorb anzeigen
 };
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    showCart(cart);
+};
+
+function sumCart (cart){
+  let sum = 0 // Variabel erzeugt für die Summe, die, wenn wir nichts machen 0 zurückgibt
+  for (const product of cart) // ich laufe über den Array, jedes Produkt, dass ich im for habe soll folgendes machen:
+  {
+    sum = sum+product.price // Summe = Summe + Produktpreis
+  }
+  return sum // gib mir die Summe zurück
+}
+
 // Funktion um Warenkorb anzeigen zu können
 function showCart(cart) {
     // ich finde meinen <div> hier Warenkorb, speicher mir es als Konstante
@@ -32,6 +48,9 @@ function showCart(cart) {
         cartItems.appendChild(div)
 
     });
+    // Summe berechnen und anzeigen
+    const cartTotal = sumCart(cart);
+    document.getElementById("cart-total").textContent = cartTotal //Textcontant lässt micht Textinhalte, welche in dem Element drin stehen,verändern und hinzufügen.
 
 };
 
@@ -54,10 +73,7 @@ function showProducts(products)//fn-Taste+F2 Feld öffnet sich, wo ich die Varia
 showProducts(products);//zeigt mir die Produkte an von let products
 
 
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    showCart(cart);
-}
+
 //index ist eine Zahl
 // ${} ist ein Platzhalter, eine Stelle wo etwas ersetzt wird bsp der Produktname, zugehöriges Bild erscheint hier
 // `` <- template strings, darin können wir beliebigen text schreiben und eine variable direkt im text einfügen
