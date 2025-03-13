@@ -19,12 +19,16 @@ function addtoCart(name, price) {
 function showCart(cart) {
     // ich finde meinen <div> hier Warenkorb, speicher mir es als Konstante
     const cartItems = document.getElementById("cart-items")
+    cartItems.innerHTML = "" // Produkte werden aus dem Warenkorb gelöscht und die neuen hinzugefügt
+
     //für jedes Objekt im Cart erzeugen wir HTML(Inhalt für den Warenkorb)
     //forEach durchläuft jedes Element einzeln..wir sagen welche Funktion für
     //jedes Element ausgeführt werden soll
-    cart.forEach(product => {
+    cart.forEach((product, index) => {
         const div = document.createElement("div")// Element <div> erstellen und als Konstante speichern
-        div.innerText = product.name + " " + product.price + "€" // ins div schreibe ich Name und Preis vom Produkt
+        div.innerHTML =
+            `<p>${product.name}, ${product.price}€</p> 
+        <button onclick="removeFromCart(${index})">Aus dem Warenkorb löschen</button>`
         cartItems.appendChild(div)
 
     });
@@ -41,19 +45,20 @@ function showProducts(products)//fn-Taste+F2 Feld öffnet sich, wo ich die Varia
         <h3>${product.name}</h3>
         <p>${product.price}</p>
         <button onclick="addtoCart('${product.name}',${product.price})" class="addbutton">Zum Warenkorb hinzufügen</button>
-        `
-        //innerHTML anstatt innerText, damit ich das, was in meiner kompletten HTML diesbezüglich steht verwendet werden kann
+        `        //innerHTML anstatt innerText, damit ich das, was in meiner kompletten HTML diesbezüglich steht verwendet werden kann
         productList.appendChild(div)
 
     });
-    
+
 };
 showProducts(products);//zeigt mir die Produkte an von let products
 
 
-function removeFromCart (cart){
-    cart.splice(index)
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    showCart(cart);
 }
+//index ist eine Zahl
 // ${} ist ein Platzhalter, eine Stelle wo etwas ersetzt wird bsp der Produktname, zugehöriges Bild erscheint hier
 // `` <- template strings, darin können wir beliebigen text schreiben und eine variable direkt im text einfügen
 /*// Neues Produkt hinzufügen
