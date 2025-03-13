@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produktverwaltung</title>
+</head>
+<body>
+    <header>     
+        <h1>Produktverwaltung</h1>
+    </header>
+<h2>Neues Produkt hinzufügen</h2>
+
+     <form id="productPlus">
+        <div class="newProduct">
+        <label for="productName">Produktname</label>
+        <input type="text" name="productName" id="productName">
+    </div>
+    <div class="newProduct">
+        <label for="productPrice">Preis (€)</label>
+        <input type="number" name="productPrice" id="productPrice">
+    </div>
+    <button onclick="hinzufuegen" id="addproduct">Produkt hinzufügen</button>
+    </form>
+
+    <h2>Produktliste</h2>
+    <div id="productTablecontainer">
+    <table id="producTable">
+        <tbody id="productTableBody">
+            <!--Produkte werden hier dynamisch eingefügt-->
+        </tbody>
+    </table>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
