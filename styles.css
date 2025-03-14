@@ -15,7 +15,9 @@ h2 {
     font-size: 20px;
 }
 img{
-    border-radius: 30%;
-    margin: auto;
-    height: 150;
+    border-radius: 50%;
+    width: 220px;
+    height: 250px;
+    display: flex;
 }
+
